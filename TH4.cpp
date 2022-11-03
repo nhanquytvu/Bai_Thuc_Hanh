@@ -5,6 +5,7 @@ void timMax(int a[100][100], int m, int n);
 void timMin(int a[100][100], int m, int n);
 int ktnt(int a);
 void TongNT(int a[100][100], int m, int n);
+void timx (int a[100][100], int m, int n ,int x);
 
 
 
@@ -12,7 +13,7 @@ int main()
 {
 	int a[100][100];
 
-	int  m, n, i, j, k, l, max, min, ktnt;
+	int  m, n, i, j, k, x , l, max, min, ktnt;
 	printf("\n NHap so dong m:");
 	scanf("%d", &m);
 	printf("\n NHap so cot n:");
@@ -26,7 +27,7 @@ int main()
 	timMin(a,m,n);
 	
     TongNT(a,m,n);
-	
+	timx(a,m,n,x);
 		
 return 0;
 }
@@ -105,9 +106,45 @@ int ktnt(int a)
 	            }
 	return demktnt;
 }
-	
-	
-	
-	
-	
-	
+
+void TongNT(int a[100][100], int m, int n)
+{ 
+        int i,j,dem=0;
+	 int tong=0;
+  	 int demktnt=0;
+	 for(i=0;i<n;i++)
+	    { 
+	      for(int j=0; j<n; j++)
+	      {
+	      
+ 		  if (ktnt(a[i][j])==1) 
+		      demktnt++; 
+		    if (ktnt(a[i][j])==1) 
+		       tong=tong+a[i][j];
+          }
+
+	    }
+    printf("\n \n Co %d phan tu la so nguyen to trong mang a",demktnt);
+    printf("\n \n Tong cac phan tu la so nguyen to trong mang a= %d",tong);
+}
+
+//tim va in phan tu x trong ma tran
+    //tim phan tu bang x
+void timx (int a[100][100], int m, int n ,int x)
+{    
+     printf("\n\n Nhap x="); 
+		 scanf("%d",&x);
+	int i,dem=0;
+	for (i=0;i<n;i++)
+	{
+		 for(int j=0; j<n; j++)
+		 {
+		 
+		if (a[i][j]==x) 
+		  printf("\n\n Gia tri %d cua phan tu a[%d][%d] bang gia tri cua x",x,i,j);
+		if (a[i][j]==x) 
+		  dem++;
+	     }  
+	}
+    if (dem==0) printf("\n\n Khong co gia tri cua phan tu nao trong mang a bang x");
+}
