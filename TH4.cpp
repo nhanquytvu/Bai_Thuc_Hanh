@@ -1,15 +1,18 @@
 #include<stdio.h>
 void nhap(int a[100][100], int m, int n);
 void xuat(int a[100][100], int m, int n);
-int timMax(int x[100][100], int m, int n);
-int timMin(int x[100][100], int m, int n);
+void timMax(int a[100][100], int m, int n);
+void timMin(int a[100][100], int m, int n);
+int ktnt(int a);
+void TongNT(int a[100][100], int m, int n);
+
 
 
 int main()
 {
 	int a[100][100];
 
-	int  m, n, i, j, k, l, max, min ;
+	int  m, n, i, j, k, l, max, min, ktnt;
 	printf("\n NHap so dong m:");
 	scanf("%d", &m);
 	printf("\n NHap so cot n:");
@@ -21,8 +24,10 @@ int main()
 	xuat(a,m,n);
 	timMax(a,m,n);
 	timMin(a,m,n);
-		printf("\n Max = %d", timMax(a, m, n));
-		printf("\n Min = %d", timMin(a, m, n));
+	
+    TongNT(a,m,n);
+	
+		
 return 0;
 }
 
@@ -54,40 +59,51 @@ void xuat(int a[100][100], int m, int n)
 }
 // max min
 //max
-int timMax(int x[100][100], int m, int n)
+void timMax(int a[100][100], int m, int n)
 {
-	int max = x[0][0];
+	int max = a[0][0];
 	for(int i=0; i<m; i++)
 	{
 		for(int j=0; j<n; j++)
 		{
-			if(max<x[i][j])
+			if(max<a[i][j])
 			{
-				max = x[i][j];
+				max = a[i][j];
 			}
 		}
 	}
-
-
-	return max;
+	printf("\n Max = %d", max);
 }
 
 //min
-int timMin(int x[100][100], int m, int n)
+void timMin(int a[100][100], int m, int n)
 {
-	int min = x[0][0];
+	int min = a[0][0];
 	for(int i=0; i<m; i++)
 	{
 		for(int j=0; j<n; j++)
 		{
-			if(min>x[i][j])
+			if(min>a[i][j])
 			{
-				min = x[i][j];
+				min = a[i][j];
 			}
 		}
 	}
-	
-	return min;
+printf("\n Min = %d", min);	
+
+}
+
+     //dem va tinh tong cac phan tu nguyen to
+int ktnt(int a)
+{
+	    int demktnt=0;
+	    int i;
+	        for ( i =2; i<=a; i++)
+	            {
+	            	if (a%i==0)
+	            	demktnt++;
+	            }
+	return demktnt;
 }
 	
 	
