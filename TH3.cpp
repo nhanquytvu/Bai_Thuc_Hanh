@@ -8,8 +8,7 @@ void TongNT(int a[10], int i);
 void timx (int a[10], int n ,int x);
 void sapxep (int a[10],int n);
 void chenx(int a[10],int n, int x);
-void Xoa1(int x[10], int *n, int vitri);
-void Xoa2(int a[10],int n);
+void Xoa(int a[10], int n);
 
 
 
@@ -22,7 +21,7 @@ int main()
 	 
     	
 	  
-     int a[10], i, j, max, x, Tong, ktnt;
+     int a[10], i, j, k, f, max, x, Tong, ktnt, dem;
          printf("\n Nhap so phan tu n:=");
          scanf("%d", &n);
          Nhapmang1c(a,n);
@@ -30,12 +29,12 @@ int main()
          tim_max(a,n);
          Tich_mang(a,n);
          TongNT(a,n);
-         printf("\n\n Nhap x="); 
+         printf("\n\n Nhap gia tri x ="); 
 		 scanf("%d",&x);
 	     timx(a,n,x);
 	     sapxep(a,n);
      	 chenx(a,n,x);
-         Xoa2(a,n);
+         Xoa(a,n);
         
 	 
      
@@ -164,29 +163,43 @@ void chenx(int a[10],int n, int x)
 }
 
     //xoa cac phan tu tai vi tri i cu the
-void Xoa1(int x[10], int *n, int vitri)
+void Xoa(int a[10], int n)
 {
-	for(int i=vitri;i<*n-1;i++)
+	int k, dem =0;
+	printf("\n \n Nhap gia tri k de xoa gtri phan tu tuong ung =");
+	scanf("%d",&k);
+	for (int f= 0; f<n; f++)
 	{
-		x[i]=x[i+1];
+	    for(int i=0; i<n; i++)
+	       {
+		      if (a[i]==k)
+		      { 
+		        dem++;
+		        for ( int j=i; j<n-1;j++)
+		            {
+		            	a[j]=a[j+1];
+		            }  
+		        n--;
+			  }
+	       }	
+		
+    }
+	if (dem==0)
+	{
+		printf("\n \n  Khong co phan tu nao trong mang bang k, mang khong doi!");
+		printf("\n \n mang a:");
+		for ( int i = 0; i<n; i++)
+		   {
+		   	printf("\n \n a[%d]= %d", i, a[i]);
+		   }
 	}
-	*n--; 
-}
-
-    //xoa cac phan tu co gia tri bang k
-void Xoa2(int a[10],int n)
-{
-	int k;
-	  printf("\n\n Nhap k="); 
-	  scanf("%d",&k);
-	  for (int i=0;i<n;i++)
-	 {
-	     if (k==a[i]) 
-	     Xoa1(a,&n,i);
-	 }
-	 printf("\n\n Mang a sau khi xoa cac phan tu co gia tri bang k:");
- 	for (int i=0;i<n;i++)
-	 {
-		printf("\n\n a[%d]=%d",i,a[i]);	
-	 }
+	else
+	{
+		printf("\n \n Mang a sau khi xoa phan co gia tri bang k:");
+		for( int i=0; i<n; i++)
+		{
+			printf("\n \n a[%d] = %d", i, a[i]);
+		}
+		
+	}
 }
